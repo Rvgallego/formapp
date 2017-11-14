@@ -1,24 +1,98 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charser="utf-8">
+    <title>Mint &gt; Start Here</title>
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300', login_path, rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+  </head>
+  <body>
+    <div id="container">
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+      <header class="cf">
+        <div id="mint-logo"><img src="/assets/mint.jpg" alt="mint logo" width="110px"></div>
+        <ul>
+          <li class="signup">Sign up</li>
+          <li class="separator">|</li>
+          <% if logged_in? %>
+            <li><%= link_to "Users", '#' %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", '#' %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Log out", logout_path, method: :delete %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Log in", login_path %></li>
+          <% end %>
+        <ul>
+      </header>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <div class="main cf">
+        <section>
+          <h1>See all your finances in one<br>place &amp; create a budget</h1>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+          <form action="#" method="post">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
-      <% end %>
+                  <%= f.label :email %>
+                  <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+                  <%= f.label :password %>
+                  <%= f.password_field :password, class: 'form-control' %>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-  </div>
-</div>
+                  <%= f.label :remember_me, class: "checkbox inline" do %>
+
+                  <span>Remember me on this computer</span>
+                  <% end %>
+
+                  <%= f.submit "Log in", class: "btn btn-primary" %>
+                <% end %>
+
+                <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+              </div>
+            </div>
+          </form>
+          <p>By clicking Sign Up you agree to our Terms of Use and Privacy Policy</p>
+
+        </section>
+
+        <div class="wrapper">
+          <aside>
+            <h3>Why you'll love it</h3>
+            <ul>
+              <li>See all your accounts in one place</li>
+              <li>Set a budget and pay down your debt</li>
+              <li>Find the best ways to grow your money</li>
+              <li>Stay <span>safe and secure</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+
+      <footer class="cf">
+        <a href="#">Support Community</a>|
+        <a href="#">Terms of Use</a>|
+        <a href="#">Privacy</a>|
+        <a href="#">Legal and Trademark Notices</a>|
+        <a href="#">About Intuit</a>
+        <div class="logos cf">
+          <img src="/assets/norton-logo.png" alt="norton secure logo" width="100px" height="50">
+          <img src="/assets/truste.png" alt="truste logo" width="140px">
+        </div>
+        <h6>&copy; 2016 Intuit, Inc.  |  ph7224.6 - spa75.32</h6>
+      </footer>
+
+    </div>
+  </body>
+</html>
